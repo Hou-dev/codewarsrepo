@@ -1,11 +1,17 @@
+#coding challenge to make a function to take inputs and return input with delimiters removed
+#the challenge is to take leave the first word with capitalzie letter if it has it and leave lower case if it comes with it.
+
 text = 'A-B-C'
 text1 = 'The-Stealth-Warrior'
 text2 = 'the_stealth_warrior'
 def to_camel_case(text):
-    a = text.title().replace("-", " ").replace("_", " ")
+    # this function is use to replace - _ delimiter
+    a = text.replace("-", " ").replace("_", " ")
+    #split words using space
     a = a.split()
+    # join the first word and capitilized every word after
     a = a[0] + ''.join(b.capitalize() for b in a[1:])
-    print(a)
+    return(a)
     # a =''
     # if '_' in text:
     #     a = text.split('_')
