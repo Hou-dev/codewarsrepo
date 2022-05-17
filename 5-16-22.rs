@@ -15,27 +15,30 @@
 fn remove_parentheses(s: &str) -> String {
     let mut r_parentheses = Vec::new();
     // let mut result = String::new();
+    // let mut put_into = true;
+    // let mut left_parent = 0;
+    // for i in s.chars(){
+    //     if i == '('{
+    //         put_into = false;
+    //     }
+    //     else if i == ')'{
+    //         put_into = true;
+    //     }else if put_into == true{
+    //             r_parentheses.push(i);
+    //     }
+    // }
     let mut count = 0;
-    let mut start = 0;
-    let mut end;
-    let mut range;
-
     for i in s.chars(){
-        count += 1;
-        r_parentheses.push(i);
         if i == '('{
-            start = count;
-        }else if i == ')'{
-            end = count;
-            range = end - start;
-            for _n in 0..= range{
-                r_parentheses.pop();
-            }
-        }else{
-            continue;
+            count = count + 1;
         }
-        count = count + 0;
-        r_parentheses.push(i);
+        if count == 0{
+            r_parentheses.push(i);
+        }
+        if i == ')'{
+            count = count - 1;
+        }
+
     }
     let mut result: String = r_parentheses.iter().collect();
     //result = result.replace("(", "").replace(")","");
@@ -45,5 +48,5 @@ fn remove_parentheses(s: &str) -> String {
 }
 
 fn main(){
-    remove_parentheses("hello example (words(more words) here) something");
+    remove_parentheses("hello example (wordz(more words) here) something");
 }
